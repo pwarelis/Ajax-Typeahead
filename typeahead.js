@@ -212,6 +212,12 @@
 				item
 			
 			while (item = items.shift()) {
+				//if returned data is array of object, we first have to get
+				//the string representation of that object
+				if (this.ajax.displayField) {
+					item = item[this.ajax.displayField]
+				}
+								
 				if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
 				else if (~item.indexOf(this.query)) caseSensitive.push(item)
 				else caseInsensitive.push(item)
