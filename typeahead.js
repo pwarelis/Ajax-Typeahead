@@ -51,7 +51,8 @@
 				loadingClass : ajax.loadingClass || null,
 				displayField : ajax.displayField || null,
 				preDispatch : ajax.preDispatch || null,
-				preProcess : ajax.preProcess || null
+				preProcess : ajax.preProcess || null,
+				onSelect: ajax.onSelect || null
 			}
 			this.query = "";
 		} else {
@@ -68,9 +69,10 @@
 
 		select: function () {
 			var val = this.$menu.find('.active').attr('data-value')
-			this.$element
-				.val(this.updater(val))
-				.change()
+			this.$element.val(this.updater(val)).change();
+			if (this.ajax.onSelect){
+				this.ajax.onSelect(val);
+			}
 			return this.hide()
 		},
 
@@ -202,7 +204,7 @@
 		},
 	
 		matcher: function (item) {
-			return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+			return (item.toLowerCase().indexOf(this.query.toLowerCase()) >= 0)
 		},
 
 		sorter: function (items) {
