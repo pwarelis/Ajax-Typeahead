@@ -202,7 +202,7 @@
 		},
 	
 		matcher: function (item) {
-			return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+			return item.toLowerCase().indexOf(this.query.toLowerCase())
 		},
 
 		sorter: function (items) {
