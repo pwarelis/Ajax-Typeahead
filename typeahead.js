@@ -284,7 +284,7 @@
 				text = item;
 			}
 
-			return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+			return text.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
 				return '<strong>' + match + '</strong>';
 			})
 		},
@@ -312,7 +312,7 @@
 					.attr('data-text' , text);
 
 
-				el.find('a').html(that.highlighter(text));
+				el.find('a').html(that.highlighter(item));
 				return el[0];
 			})
 
